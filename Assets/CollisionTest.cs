@@ -4,9 +4,6 @@ public class CollisionTest : MonoBehaviour
 {
     Collider myCollider;
 
-    private float eighthInch = 0.003175f;
-    private float quarterInch = 0.009f;
-
     private void Awake()
     {
         myCollider = GetComponent<Collider>();
@@ -24,16 +21,15 @@ public class CollisionTest : MonoBehaviour
 
     private void SimpleCollisionTest()
     {
-        Collider myCollider = gameObject.GetComponent<Collider>();
         // Get all of the nearby colliders
         // This finds the other object
         Collider[] overlaps = Physics.OverlapBox(myCollider.bounds.center, myCollider.bounds.extents);
-        Collider[] overlaps2 = Physics.OverlapBox(myCollider.transform.position, myCollider.bounds.extents);
 
-        if (overlaps.Length > 0 || overlaps2.Length > 0)
+        if (overlaps.Length > 0)
         {
-            Debug.Log("found overlaps");
+            Debug.Log("Found an overlapping object");
         }
+        
         // For each of those colliders nearby, see if I'm actually colliding with them
         foreach (Collider overlapCollider in overlaps)
         {
@@ -46,7 +42,7 @@ public class CollisionTest : MonoBehaviour
             // If we are overlapping something, and it isn't ourselves, simply log it
             if (isOverlapping && overlapCollider.gameObject != myCollider.gameObject)
             {
-                Debug.Log($"found overlap between {myCollider.gameObject.name} and {overlapCollider.gameObject.name}");
+                Debug.Log($"Found penetration between {myCollider.gameObject.name} and {overlapCollider.gameObject.name}");
             }
         }
     }
