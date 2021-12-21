@@ -9,11 +9,7 @@ public class CollisionTest : MonoBehaviour
         myCollider = GetComponent<Collider>();
     }
 
-    // To test this...
-    // I have setup the scene to already show a place where the logs output.
-    // While the game is playing, try moving around the object this script is attached to.
-    
-    // With the physics debugger open, you can see there should be SO MANY more locations the objects should be colliding
+    // Youtube example video with Steps to Reproduce: https://www.youtube.com/watch?v=HgP-M-fAdFU
     void Update()
     {
         SimpleCollisionTest();
